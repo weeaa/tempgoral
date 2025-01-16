@@ -30,5 +30,5 @@ func (c *Client) SendTransaction(tx *solana.Transaction) (solana.Signature, erro
 }
 
 func (c *Client) GenerateTipInstruction(amount uint64, from solana.PublicKey) *system.Transfer {
-	return system.NewTransferInstruction(amount, from, NOZOMI_TIP)
+	return system.NewTransferInstruction(amount, from, solana.MustPublicKeyFromBase58(PickRandomNozomiTipAddress()))
 }
