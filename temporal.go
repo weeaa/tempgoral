@@ -16,6 +16,7 @@ type Client struct {
 
 func New(dialURL Region, ste SendTransactionEndpoint, apiKey string) *Client {
 	client := Client{
+		Ctx:    context.Background(),
 		ApiKey: apiKey,
 	}
 
