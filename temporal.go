@@ -10,26 +10,34 @@ import (
 type Client struct {
 	Ctx    context.Context
 	Client *rpc.Client
-	Ste    *rpc.Client
 	ApiKey string
 }
 
-func New(ctx context.Context, dialURL Region, ste SendTransactionEndpoint, apiKey string) *Client {
+func New(ctx context.Context, region Region, apiKey string) *Client {
 	client := Client{
 		Ctx:    ctx,
 		ApiKey: apiKey,
 	}
 
-	client.Client = rpc.New(string(dialURL) + client.ApiKey)
-	client.Ste = rpc.New(string(ste) + client.ApiKey)
+	client.Client = rpc.New(string(region) + client.ApiKey)
 
 	return &client
 }
 
 func (c *Client) SendTransaction(tx *solana.Transaction) (solana.Signature, error) {
-	return c.Ste.SendTransaction(c.Ctx, tx)
+	return c.Client.SendTransaction(c.Ctx, tx)
 }
 
-func (c *Client) GenerateTipInstruction(amount uint64, from solana.PublicKey) *system.Transfer {
+func (c *Client) GenerateTipInstruction(amount uint64, from, to solana.PublicKey) *system.Transfer {
+	if amount < MIN_TIP_AMOUNT {
+		amount = MIN_TIP_AMOUNT
+	}
+	return system.NewTransferInstruction(amount, from, to)
+}
+
+func (c *Client) GenerateTipInstructionWithRandomTipAddress(amount uint64, from solana.PublicKey) *system.Transfer {
+	if amount < MIN_TIP_AMOUNT {
+		amount = MIN_TIP_AMOUNT
+	}
 	return system.NewTransferInstruction(amount, from, solana.MustPublicKeyFromBase58(PickRandomNozomiTipAddress()))
 }

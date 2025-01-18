@@ -1,7 +1,6 @@
 package temporal
 
 import (
-	"github.com/gagliardetto/solana-go"
 	"math/rand"
 	"time"
 )
@@ -31,18 +30,19 @@ func PickRandomNozomiTipAddress() string {
 	return NOZOMI_TIP_ADDRESSES[rand.Intn(len(NOZOMI_TIP_ADDRESSES))]
 }
 
-var NOZOMI_TIP = solana.MustPublicKeyFromBase58("TEMPaMeCRFAS9EKF53Jd6KpHxgL47uWLcpFArU1Fanq")
 var MIN_TIP_AMOUNT uint64 = 1000000
 
 type Region string
-type SendTransactionEndpoint string
+type Endpoint string
 
 var (
-	USEast_STE    SendTransactionEndpoint = "http://nozomi-preview-pit.temporal.xyz/?c="
-	Frankfurt_STE SendTransactionEndpoint = "http://fra1.nozomi.temporal.xyz/?c="
-	Amsterdam_STE SendTransactionEndpoint = "http://nozomi-preview-ams.temporal.xyz/?c="
+	PITT_HTTP Endpoint = "http://pit1.nozomi.temporal.xyz/?c="
+	FRA_HTTP  Endpoint = "http://fra2.nozomi.temporal.xyz/?c="
+	EWR_HTTP  Endpoint = "http://ewr1.nozomi.temporal.xyz/?c="
+	AMS_HTTP  Endpoint = "http://ams1.nozomi.temporal.xyz/?c="
 
-	USEast    Region = "https://nozomi-preview-pit.temporal.xyz/?c="
-	Frankfurt Region = "https://fra1.nozomi.temporal.xyz/?c="
-	Amsterdam Region = "https://nozomi-preview-ams.temporal.xyz/?c="
+	PITT_HTTPS Region = "https://pit1.secure.nozomi.temporal.xyz/?c="
+	FRA_HTTPS  Region = "https://fra2.secure.nozomi.temporal.xyz/?c="
+	EWR_HTTPS  Region = "https://ewr1.secure.nozomi.temporal.xyz/?c="
+	AMS_HTTPS  Region = "https://ams1.secure.nozomi.temporal.xyz/?c="
 )
