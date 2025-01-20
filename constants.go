@@ -33,13 +33,12 @@ func PickRandomNozomiTipAddress() string {
 var MIN_TIP_AMOUNT uint64 = 1000000
 
 type Region string
-type Endpoint string
 
 var (
-	PITT_HTTP Endpoint = "http://pit1.nozomi.temporal.xyz/?c="
-	FRA_HTTP  Endpoint = "http://fra2.nozomi.temporal.xyz/?c="
-	EWR_HTTP  Endpoint = "http://ewr1.nozomi.temporal.xyz/?c="
-	AMS_HTTP  Endpoint = "http://ams1.nozomi.temporal.xyz/?c="
+	PITT_HTTP Region = "http://pit1.nozomi.temporal.xyz/?c="
+	FRA_HTTP  Region = "http://fra2.nozomi.temporal.xyz/?c="
+	EWR_HTTP  Region = "http://ewr1.nozomi.temporal.xyz/?c="
+	AMS_HTTP  Region = "http://ams1.nozomi.temporal.xyz/?c="
 
 	PITT_HTTPS Region = "https://pit1.secure.nozomi.temporal.xyz/?c="
 	FRA_HTTPS  Region = "https://fra2.secure.nozomi.temporal.xyz/?c="
