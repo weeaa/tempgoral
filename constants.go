@@ -5,6 +5,10 @@ import (
 	"time"
 )
 
+var (
+	tipStreamURL = "wss://api.nozomi.temporal.xyz/tip_stream"
+)
+
 var NOZOMI_TIP_ADDRESSES = []string{
 	"TEMPaMeCRFAS9EKF53Jd6KpHxgL47uWLcpFArU1Fanq",
 	"noz3jAjPiHuBPqiSPkkugaJDkJscPuRhYnSpbi8UvC4",

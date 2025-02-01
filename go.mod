@@ -2,7 +2,10 @@ module github.com/weeaa/tempgoral
 
 go 1.23
 
-require github.com/gagliardetto/solana-go v1.12.0
+require (
+	github.com/gagliardetto/solana-go v1.12.0
+	github.com/gorilla/websocket v1.5.3
+)
 
 require (
 	filippo.io/edwards25519 v1.1.0 // indirect
